@@ -44,10 +44,15 @@ Things you may want to cover:
 
 
 ## items テーブル
-| Column        | Type       | Option                         |
-| ------------- | ---------- | ------------------------------ |
-| name          | string     | null: false                    |
-| user          | references | null: false, foreign_key: true | 
+| Column          | Type       | Option                         |
+| --------------- | ---------- | ------------------------------ |
+| name            | string     | null: false                    |
+| introduction    | text       | null: false                    |
+| category        | string     | null: false                    |
+| condition       | string     | null: false                    |
+| postage_type    | string     | null: false                    |
+| price           | integer    | null: false                    |
+| user            | references | null: false, foreign_key: true | 
 
 ### Association
 
