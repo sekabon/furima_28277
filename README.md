@@ -56,7 +56,6 @@ Things you may want to cover:
 
 -belongs_to :user
 -has_many   :comments
--has_one    :delivery_address
 -has_one    :Purchase
 
 
