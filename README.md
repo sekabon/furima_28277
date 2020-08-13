@@ -25,14 +25,16 @@ Things you may want to cover:
 # テーブル設計
 
 ## users テーブル
-| Column      | Type     | Option      |
-| ----------- | -------- | ----------- |
-| name        | string   | null: false |
-| name_reading| string   | null: false |
-| nickname    | string   | null: false |
-| email       | string   | null: false |
-| password    | string   | null: false |
-| birthday    | date     | null: false |
+| Column             | Type    | Option      |
+| ------------------ | ------- | ----------- |
+| first_name         | string  | null: false |
+| family_name        | string  | null: false |
+| first_name_reading | string  | null: false |
+| family_name_reading| string  | null: false |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| password           | string  | null: false |
+| birthday           | date    | null: false |
 
 ### Association
 
@@ -45,13 +47,11 @@ Things you may want to cover:
 ## items テーブル
 | Column        | Type       | Option                         |
 | ------------- | ---------- | ------------------------------ |
-| item_name     | string     | null: false                    |
+| name          | string     | null: false                    |
+| image         | text       | null: false                    |
 | price         | integer    | null: false                    |
 | explanation   | text       | null: false                    |
-| category      | string     | null: false                    |
-| status        | string     | null: false                    |
-| charges       | string     | null: false                    |
-| delivery_date | date       | null: false                    | 
+| prefecture    | string     | null: false                    |
 | user          | references | null: false, foreign_key: true | 
 
 ### Association
@@ -75,19 +75,17 @@ Things you may want to cover:
 -belongs_to :item
 
 
-## Purchase テーブル
+## purchase テーブル
 | Column           | Type       | Option                         |
 | ---------------- | ---------- | ------------------------------ |
-| card_number      | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
-| delivery_address | references | null: false, foreign_key: true |
 
 ### Association
 
 -belongs_to :user
 -belongs_to :item
--belongs_to :delivery_address
+-has_one    :delivery_address
 
 
 ## delivery_address テーブル
@@ -99,14 +97,10 @@ Things you may want to cover:
 | house_number  | string     | null: false                    |
 | building_name | string     |                                |
 | phone_number  | integer    | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| item          | references | null: false, foreign_key: true |
-| Purchase      | references | null: false, foreign_key: true |
+| purchase      | references | null: false, foreign_key: true |
 
 ### Association
 
--belongs_to :user
--belongs_to :item
--has_one    :Purchase
+-belongs_to :purchase
 
 
