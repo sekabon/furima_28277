@@ -50,6 +50,7 @@ Things you may want to cover:
 | image         | text       | null: false                    |
 | price         | integer    | null: false                    |
 | explanation   | text       | null: false                    |
+| shipping_area | text       | null: false                    |
 | user          | references | null: false, foreign_key: true | 
 
 ### Association
