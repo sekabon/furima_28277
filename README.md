@@ -40,7 +40,6 @@ Things you may want to cover:
 
 -has_many :items
 -has_many :comments
--has_many :delivery_address
 -has_many :Purchase
 
 
