@@ -51,6 +51,8 @@ Things you may want to cover:
 | category        | string     | null: false                    |
 | condition       | string     | null: false                    |
 | postage_type    | string     | null: false                    |
+| ship_days       | string     | null: false                    |
+| ship_prefecture | string     | null: false                    |
 | price           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true | 
 
