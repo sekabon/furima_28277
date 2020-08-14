@@ -48,11 +48,11 @@ Things you may want to cover:
 | --------------- | ---------- | ------------------------------ |
 | name            | string     | null: false                    |
 | introduction    | text       | null: false                    |
-| category        | string     | null: false                    |
-| condition       | string     | null: false                    |
-| postage_type    | string     | null: false                    |
-| ship_days       | string     | null: false                    |
-| ship_prefecture | string     | null: false                    |
+| category_id     | integer    | null: false                    |
+| condition_id    | integer    | null: false                    |
+| postage_type_id | integer    | null: false                    |
+| ship_days_id    | integer    | null: false                    |
+| ship_area_id    | integer    | null: false                    |
 | price           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true | 
 
