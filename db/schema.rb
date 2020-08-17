@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2020_08_14_030059) do
     t.string "family_name_reading", null: false
     t.string "nickname", null: false
     t.date "birthday", null: false
-    t.string "password", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
