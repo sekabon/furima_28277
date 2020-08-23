@@ -5,7 +5,7 @@
   </header>
   <div class="items-sell-main">
     <h2 class="items-sell-title">商品の情報を入力</h2>
-    <%= form_with model: @item, local: true do |f| %>
+    <%= form_with model: @item, url: items_path, local: true do |f| %>
    
     <%= render 'shared/error_messages', model: @item %>
     
@@ -85,6 +85,7 @@
     <%# /配送について %>
 
     <%# 販売価格 %>
+    
     <div class="sell-price">
       <div class="weight-bold-text question-text">
         <span>販売価格<br>(¥300〜9,999,999)</span>
@@ -102,7 +103,7 @@
         <div class="price-content">
           <span>販売手数料 (10%)</span>
           <span>
-            <span id='add-tax-price'></span>円
+            <span id="add-tax-price"></span>円
           </span>
         </div>
         <div class="price-content">
