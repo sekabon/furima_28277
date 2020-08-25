@@ -125,9 +125,7 @@
     <h2 class='title'>ピックアップカテゴリー</h2>
     <%= link_to '新規投稿商品', "#", class: "subtitle" %>
     <ul class='item-lists'>
-     
-      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-    
+
      <% if @items.each do |item| %>
       <li class='list'>
         <%= link_to "#" do %>
@@ -157,12 +155,7 @@
         </div>
         <% end %>
       </li>
-     
-      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
     <% end.empty? %>
-    
-      <%# 商品がない場合のダミー %>
-      <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
         <%= link_to '#' do %>
         <%= image_tag "https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png", class: "item-img" %>
@@ -181,10 +174,9 @@
         <% end %>
       </li>
     <% end %>
-      <%# //商品がある場合は表示されないようにしましょう %>
-      <%# //商品がない場合のダミー %>
     </ul>
   </div>
+  
   <%# //商品一覧 %>
 </div>
 <div class='purchase-btn'>
