@@ -8,7 +8,11 @@ class Item < ApplicationRecord
   end
   has_one_attached :image
   extend ActiveHash::Associations::ActiveRecordExtensions
-  # belongs_to_active_hash :item_detail
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :postage_type
+  belongs_to_active_hash :ship_area
+  belongs_to_active_hash :ship_days
   with_options presence: true do
     validates :category_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :condition_id, numericality: { other_than: 0, message: "can't be blank" }
