@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user).order('created_at DESC')
   end
 
-  def new
+  def new 
     @item = Item.new
   end
 
@@ -15,6 +15,9 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+  def show
+    @item = Item.find(params[:id])
   end
 
   def move_to_index
