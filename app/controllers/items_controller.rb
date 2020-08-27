@@ -34,12 +34,9 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
-<<<<<<< Updated upstream
 
   private
-=======
  
->>>>>>> Stashed changes
   def move_to_index
     redirect_to action: :index unless user_signed_in?
   end
