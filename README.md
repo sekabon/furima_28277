@@ -40,7 +40,7 @@ Things you may want to cover:
 
 -has_many :items
 -has_many :comments
--has_many :Purchase
+-has_many :purchases
 
 
 ## items テーブル
@@ -60,7 +60,7 @@ Things you may want to cover:
 
 -belongs_to :user
 -has_many   :comments
--has_one    :Purchase
+-has_one    :purchase
 
 
 ## comments テーブル
