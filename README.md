@@ -79,6 +79,7 @@ Things you may want to cover:
 ## purchase テーブル
 | Column           | Type       | Option                         |
 | ---------------- | ---------- | ------------------------------ |
+| price            | integer    | null: false                    |
 | user             | references | null: false, foreign_key: true |
 | item             | references | null: false, foreign_key: true |
 
