@@ -1,15 +1,15 @@
 class PurchasesController < ApplicationController
-  def index
-    
+  before_action :authenticate_user!
+  before_action :move_to_root_path
+  
+  def index  
     @purchase = ItemPurchase.new
     @item = Item.find(params[:item_id])
-    # @purchases = @item.purchase.
   end
 
 
   def create    
     @purchase = ItemPurchase.new(purchase_params)
-    #binding.pry
     if @purchase.valid? 
       pay_item
       @purchase.save
@@ -22,6 +22,12 @@ class PurchasesController < ApplicationController
   end
 
   private
+  def move_to_root_path
+    @item = Item.find(params[:item_id])
+    if @item.user_id == current_user.id
+     redirect_to root_path 
+    end 
+  end
 
   def purchase_params
     params.require(:item_purchase).permit(
