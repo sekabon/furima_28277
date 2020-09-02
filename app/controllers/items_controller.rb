@@ -4,6 +4,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
+    @purchases = Purchase.pluck('item_id')
   end
 
   def new
@@ -17,6 +18,10 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @purchases = Purchase.pluck('item_id')
   end
 
   def destroy
