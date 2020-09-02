@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_root_path
+  before_action :move_to_index
   
   def index  
     @purchase = ItemPurchase.new
@@ -22,10 +22,11 @@ class PurchasesController < ApplicationController
   end
 
   private
-  def move_to_root_path
+  def move_to_index
     @item = Item.find(params[:item_id])
-    if @item.user_id == current_user.id
-     redirect_to root_path 
+    @purchase = Purchase.find(params[:item_id])
+    if @item.id == @purchase.item_id && @item.user_id != current_user.id 
+      redirect_to root_path
     end 
   end
 
