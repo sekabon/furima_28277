@@ -1,10 +1,10 @@
 const pay = () => {
   Payjp.setPublicKey(process.env.PAYJP_PUBLIC_KEY);
-  console.log(process.env.PAYJP_PUBLIC_KEY)
+  
   const form = document.getElementById("charge-form");
   form.addEventListener("submit", (e) =>{
     e.preventDefault();
-    console.log(form)
+    
     const formResult = document.getElementById("charge-form");
     const formData = new FormData(formResult);
 
@@ -14,9 +14,9 @@ const pay = () => {
       exp_month: formData.get("item_purchase[exp_month]"),
       exp_year: `20${formData.get("item_purchase[exp_year]")}`,
     };
-    console.log(card)
+    
     Payjp.createToken(card, (status, response) => {
-      console.log(response)
+      
       if (status === 200) {
         const token = response.id;
         const renderDom = document.getElementById("charge-form");
