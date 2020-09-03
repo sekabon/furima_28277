@@ -1,6 +1,6 @@
-class PurchasesController < ApplicationController
+class PurchasesController < ApplicationController 
   before_action :authenticate_user!
-  before_action :move_to_index
+  before_action :redirect_to_root, except: :index
   
   def index  
     @purchase = ItemPurchase.new
@@ -13,19 +13,17 @@ class PurchasesController < ApplicationController
     if @purchase.valid? 
       pay_item
       @purchase.save
-      return redirect_to root_path
+      redirect_to root_path
     else
-      @purchase = ItemPurchase.new
-      @item = Item.find(params[:item_id])
-      render 'index'
+      render :index
     end
   end
 
   private
-  def move_to_index
+  def redirect_to_root
     @item = Item.find(params[:item_id])
     @purchase = Purchase.find(params[:item_id])
-    if @item.id == @purchase.item_id && @item.user_id != current_user.id 
+    if @item.id == @purchase.item_id || current_user.id == @item.user_id 
       redirect_to root_path
     end 
   end

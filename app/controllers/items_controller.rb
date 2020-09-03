@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.includes(:user).order('created_at DESC')
-    @purchases = Purchase.pluck('item_id')
   end
 
   def new
@@ -13,15 +12,12 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save
+    if @item.valid?
+      @item.save
       redirect_to root_path
     else
       render :new
     end
-  end
-
-  def show
-    @purchases = Purchase.pluck('item_id')
   end
 
   def destroy
@@ -31,7 +27,7 @@ class ItemsController < ApplicationController
       render :show
     end
   end
-
+  
   def update
     if @item.update(item_params)
       redirect_to item_path
