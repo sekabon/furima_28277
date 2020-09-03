@@ -1,37 +1,37 @@
-class PurchasesController < ApplicationController 
+class PurchasesController < ApplicationController
   before_action :authenticate_user!
   before_action :redirect_to_root, except: :index
-  
-  def index  
+
+  def index
     @purchase = ItemPurchase.new
     @item = Item.find(params[:item_id])
   end
 
-
-  def create    
+  def create
     @purchase = ItemPurchase.new(purchase_params)
-    if @purchase.valid? 
+    if @purchase.valid?
       pay_item
       @purchase.save
       redirect_to root_path
     else
-      render :index
+      render action: :index
     end
   end
 
   private
+
   def redirect_to_root
     @item = Item.find(params[:item_id])
     @purchase = Purchase.find(params[:item_id])
-    if @item.id == @purchase.item_id || current_user.id == @item.user_id 
-      redirect_to root_path
-    end 
+    redirect_to root_path if @item.id == @purchase.item_id || current_user.id == @item.user_id
   end
 
   def purchase_params
     params.require(:item_purchase).permit(
-      :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(
-        token: params[:token],item_id: params[:item_id],user_id: current_user.id)
+      :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number
+    ).merge(
+      token: params[:token], item_id: params[:item_id], user_id: current_user.id
+    )
   end
 
   def pay_item
