@@ -1,6 +1,6 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :redirect_to_root, except: :index
+  before_action :redirect_to_root
 
   def index
     @purchase = ItemPurchase.new
@@ -23,7 +23,9 @@ class PurchasesController < ApplicationController
   def redirect_to_root
     @item = Item.find(params[:item_id])
     @purchase = Purchase.find(params[:item_id])
-    redirect_to root_path if @item.id == @purchase.item_id || current_user.id == @item.user_id
+    if @item.id == @purchase.item_id || current_user.id == @item.user_id
+      redirect_to root_path
+    end
   end
 
   def purchase_params
