@@ -22,8 +22,8 @@ class PurchasesController < ApplicationController
 
   def redirect_to_root
     @item = Item.find(params[:item_id])
-    @purchase = Purchase.find(params[:item_id])
-    if @item.id == @purchase.item_id || current_user.id == @item.user_id
+    #binding.pry
+    if Purchase.pluck(:item_id).any? || current_user.id == @item.user_id
       redirect_to root_path
     end
   end
