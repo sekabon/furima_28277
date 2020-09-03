@@ -11,4 +11,5 @@ class User < ApplicationRecord
     validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: 'is invalid. Include at-sign(@)' }
   end
   has_many :items
+  has_many :purchases
 end
