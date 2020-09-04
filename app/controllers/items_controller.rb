@@ -19,7 +19,13 @@ class ItemsController < ApplicationController
       render :new
     end
   end
-
+  def edit
+    if Purchase.pluck(:item_id).any? @item.id
+      redirect_to root_path
+    else
+      render :index
+    end
+  end
   def destroy
     if set_item.destroy
       redirect_to root_path
@@ -39,10 +45,7 @@ class ItemsController < ApplicationController
   private
 
   def move_to_index
-    #binding.pry
-    if Purchase.pluck(:item_id).any? @item.id || current_user.id == @item.user_id
-      redirect_to action: :index 
-    end
+    redirect_to action: :index unless user_signed_in?
   end
 
   def set_item
