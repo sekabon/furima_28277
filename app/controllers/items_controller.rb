@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     if Purchase.pluck(:item_id).any? @item.id
       redirect_to root_path
     else
-      render :index
+      render :edit
     end
   end
   def destroy
