@@ -9,7 +9,7 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase = ItemPurchase.new(purchase_params)
-    #binding.pry
+    # binding.pry
     if @purchase.valid?
       pay_item
       @purchase.save
@@ -23,10 +23,8 @@ class PurchasesController < ApplicationController
 
   def redirect_to_root
     @item = Item.find(params[:item_id])
-    #binding.pry
-    if Purchase.pluck(:item_id).any? @item.id || current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    # binding.pry
+    redirect_to root_path if Purchase.pluck(:item_id).any? @item.id || current_user.id == @item.user_id
   end
 
   def purchase_params

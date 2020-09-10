@@ -19,6 +19,7 @@ class ItemsController < ApplicationController
       render :new
     end
   end
+
   def edit
     if Purchase.pluck(:item_id).any? @item.id
       redirect_to root_path
@@ -26,6 +27,7 @@ class ItemsController < ApplicationController
       render :edit
     end
   end
+
   def destroy
     if set_item.destroy
       redirect_to root_path
