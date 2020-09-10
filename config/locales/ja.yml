@@ -18,7 +18,9 @@ ja:
        ship_days_id: 配送までの日数
        ship_area_id: 配送元の地域
        price: 商品の価格
-     purchase/delivery_addresses:
+ activemodel:
+   attributes:
+     item_purchase:
        token: トークン
        postal_code: 郵便番号
        city: 市区町村
