@@ -1,9 +1,12 @@
 # config valid for current version and patch releases of Capistrano
-lock "3.14.1"
+lock '3.14.1'
 
-set :application, "furima_28277"
-set :repo_url, "git@github.com:sekabon/furima_28277.git"
+set :application, 'furima_28277'
+
+set :repo_url, 'git@github.com:sekabon/furima_28277.git'
+
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+
 set :rbenv_type, :user
 set :rbenv_ruby, '2.6.5'
 
