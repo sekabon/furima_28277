@@ -26,11 +26,15 @@
     </div> 
 
   <% if user_signed_in? && current_user.id == @item.user_id %>
+   <% unless Purchase.pluck(:item_id).any? @item.id %>
     <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
     <p class='or-text'>or</p>
+   <% end %>
     <%= link_to '削除', item_path(@item), method: :delete, class:'item-destroy' %>
   <% else %>
+   <% unless Purchase.pluck(:item_id).any? @item.id %>
     <%= link_to '購入画面に進む', item_purchases_path(@item) ,class:"item-red-btn" %>
+   <% end %>
   <% end %>
     <div class="item-explain-box">
       <span><%= @item.introduction %></span>
